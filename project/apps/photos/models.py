@@ -3,13 +3,20 @@ from django.conf import settings
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, primary_key=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name_plural = "Categories"
+
 
 
 class Photo(models.Model):
     EXTENSIONS = ('.png', '.jpg', '.jpeg')
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, primary_key=True)
     watched = models.BooleanField(default=True)
     category = models.ForeignKey(Category, on_delete=models.RESTRICT, null=True, blank=True)
 
