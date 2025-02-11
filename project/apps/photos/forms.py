@@ -9,3 +9,12 @@ class CategoryForm(forms.ModelForm):
         labels = {
             'name': 'Nazwa Kategorii',
         }
+
+
+class PhotoForm(forms.ModelForm):
+    class Meta:
+        model = models.Photo
+        fields = '__all__'
+        labels = {
+            'category': 'Kategoria',
+        }
