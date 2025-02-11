@@ -8,13 +8,11 @@
 
 
 {% block content %}
-  <h1>{{ photo.name }}</h1>
-
   <form method="POST">
     {% csrf_token %}
-    {{ form }}
+    {{ form.name.as_field_group }}
+    <img src="{{ photo.get_url }}" alt="{{ photo.name }}">
+    {{ form.category.as_field_group }}
     <input type="submit" value="Zatwierdź zmiany">
   </form>
-
-  <img src="{{ photo.get_url }}" alt="{{ photo.name }}">
 {% endblock content %}

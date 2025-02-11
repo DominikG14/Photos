@@ -56,7 +56,9 @@ def inspect_photo(request: HttpRequest, photo_name):
     if request.method == 'POST':
         form = forms.PhotoForm(request.POST, instance=photo)
         if form.is_valid():
-            form.save()
+            alter_photo = form.save(commit=False)
+            photo.move_to_category(alter_photo.category.name)
+            alter_photo.save()
 
 
 

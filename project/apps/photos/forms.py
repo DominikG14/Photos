@@ -16,5 +16,6 @@ class PhotoForm(forms.ModelForm):
         model = models.Photo
         fields = '__all__'
         labels = {
+            'name': 'Nazwa zdjęcia',
             'category': 'Kategoria',
         }
