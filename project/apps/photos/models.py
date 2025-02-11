@@ -17,3 +17,8 @@ class Photo(models.Model):
         if self.category:
             return f'{settings.MEDIA_URL}/{self.category.name}/{self.name}'
         return f'{settings.NO_CATEGORY_URL}/{self.name}'
+    
+    def __str__(self):
+        if self.category:
+            return f'{self.category.name} - {self.name}'
+        return f'{settings.NO_CATEGORY_NAME} - {self.name}'

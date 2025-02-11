@@ -7,11 +7,14 @@ from ..models import Photo
 
 class NoCategoryPhotos:    
     def create_dir(self):
+        if not os.path.exists(settings.UPLOADED_ROOT):
+            os.makedirs(settings.UPLOADED_ROOT)
+
         if not os.path.exists(settings.NO_CATEGORY_ROOT):
-            os.mkdir(settings.NO_CATEGORY_ROOT)
+            os.makedirs(settings.NO_CATEGORY_ROOT)
     
     def move_files(self):
-        for root, dirs, files in os.walk(settings.MEDIA_ROOT, topdown=False):
+        for root, dirs, files in os.walk(settings.UPLOADED_ROOT, topdown=False):
 
             # Move files
             for file in files:
