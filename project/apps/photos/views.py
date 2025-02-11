@@ -11,13 +11,15 @@ from .utils.no_category import NoCategoryPhotos
 
 def create_category(request: HttpRequest):
     template = get_template(app=urls.app_name)
+
+    if request.method == 'GET':
+        form = forms.CategoryForm
     
     if request.method == 'POST':
         form = forms.CategoryForm(request.POST)
         if form.is_valid():
             form.save()
-
-    form = forms.CategoryForm()
+            form = forms.CategoryForm()
 
     return render(request, template, {
         'form': form,
@@ -41,4 +43,24 @@ def display_photos(request: HttpRequest):
 
     return render(request, template, {
         'photos': photos,
+    })
+
+
+def inspect_photo(request: HttpRequest, photo_name):
+    template = get_template(app=urls.app_name)
+    photo = Photo.objects.get(name=photo_name)
+
+    if request.method == 'GET':
+        form = forms.PhotoForm(instance=photo)
+    
+    if request.method == 'POST':
+        form = forms.PhotoForm(request.POST, instance=photo)
+        if form.is_valid():
+            form.save()
+
+
+
+    return render(request, template, {
+        'photo': photo,
+        'form': form,
     })

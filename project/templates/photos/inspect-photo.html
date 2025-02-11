@@ -1,0 +1,20 @@
+{% extends 'photos/base.html' %}
+{% load static %}
+
+
+{% block static %}
+<link rel="stylesheet" href="{% static 'photos/styles/inspect-photo.css' %}">
+{% endblock static %}
+
+
+{% block content %}
+  <h1>{{ photo.name }}</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Zatwierdź zmiany">
+  </form>
+
+  <img src="{{ photo.get_url }}" alt="{{ photo.name }}">
+{% endblock content %}
