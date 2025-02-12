@@ -1,7 +1,11 @@
 from django.db import models
 from django.conf import settings
 
+from PIL import Image
+from PIL.ExifTags import TAGS
 import os
+from datetime import datetime
+import uuid
 from enum import IntEnum
 
 
@@ -42,19 +46,34 @@ class Photo(models.Model):
     def save(self, *args, **kwargs):
         if Photo.objects.filter(filename=self.filename).exists():
             self.status = PhotoStatus.DUPLICATED
-        
-        if self.category is None:
-            match self.status:
-                case PhotoStatus.TRACKED:
-                    no_category, created = Category.objects.get_or_create(name=settings.NO_CATEGORY_DIR)
-                    self.category = no_category
+            self.title = f'{self.title}-{uuid.uuid4().hex}'
 
-                case PhotoStatus.DUPLICATED:
-                    duplicates, created = Category.objects.get_or_create(name=settings.DUPLICATES_DIR)
-                    self.category = duplicates
-                    self.title = f'{self.title}_duplicated'
-
+            duplicates, created = Category.objects.get_or_create(name=settings.DUPLICATES_DIR)
+            self.category = duplicates
+        else:
+            no_category, created = Category.objects.get_or_create(name=settings.NO_CATEGORY_DIR)
+            self.category = no_category
+                    
         return super().save(*args, **kwargs)
+    
+    def get_filepath(self) -> str:
+        return f'{settings.MEDIA_ROOT}/{self.image.name}'
+    
+    def get_creation_date(self) -> str | None:
+        with Image.open(self.get_filepath()) as img:
+            # Extract EXIF data and find the 'DateTime' tag
+            exif_data = img._getexif()
+            
+            if exif_data is None:
+                return None
+
+            for tag, value in exif_data.items():
+                if TAGS.get(tag) == 'DateTime':
+                    # Change to proper time format
+                    date = datetime.strptime(value, '%Y:%m:%d %H:%M:%S')
+                    return date.strftime(settings.PHOTOS_DATETIME_FORMAT)
+
+            return None
 
     def __str__(self):
         return f'{self.category.name} - {self.title}'

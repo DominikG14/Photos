@@ -56,11 +56,11 @@ def display_all_photos(request: HttpRequest):
 def display_duplicated_photos(request: HttpRequest):
     template = get_template(app=urls.app_name)
 
-    photos = Photo.objects.filter(status=PhotoStatus.DUPLICATED)
+    duplicates = Photo.objects.filter(status=PhotoStatus.DUPLICATED)
 
     return render(request, template, {
-        'photos_num': len(photos),
-        'photos': photos,
+        'duplicates_num': len(duplicates),
+        'duplicates': duplicates,
     })
 
 

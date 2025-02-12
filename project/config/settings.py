@@ -76,6 +76,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 NO_CATEGORY_DIR = 'Bez Kategorii'
 DUPLICATES_DIR = 'Duplikaty'
 
+PHOTOS_DATETIME_FORMAT = '%d.%m.%Y'
+
 
 # Database
 # Default primary key field type
