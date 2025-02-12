@@ -5,7 +5,7 @@ from utils.views import get_template
 
 from . import urls
 from . import forms
-from .models import Photo
+from .models import Photo, PhotoStatus
 
 
 def create_category(request: HttpRequest):
@@ -25,7 +25,7 @@ def create_category(request: HttpRequest):
     })
 
 
-def import_photos(request: HttpRequest):
+def import_single_photo(request: HttpRequest):
     template = get_template(app=urls.app_name)
 
     if request.method == 'GET':
@@ -42,33 +42,42 @@ def import_photos(request: HttpRequest):
     })
 
 
-def display_photos(request: HttpRequest):
+def display_all_photos(request: HttpRequest):
     template = get_template(app=urls.app_name)
 
-    photos = Photo.objects.all()
+    photos = Photo.objects.exclude(status=PhotoStatus.DUPLICATED)
 
     return render(request, template, {
+        'photos_num': len(photos),
+        'photos': photos,
+    })
+
+
+def display_duplicated_photos(request: HttpRequest):
+    template = get_template(app=urls.app_name)
+
+    photos = Photo.objects.filter(status=PhotoStatus.DUPLICATED)
+
+    return render(request, template, {
+        'photos_num': len(photos),
         'photos': photos,
     })
 
 
 def inspect_photo(request: HttpRequest, photo_name):
     template = get_template(app=urls.app_name)
-    photo = Photo.objects.get(name=photo_name)
+    photo = Photo.objects.get(title=photo_name)
 
-    if request.method == 'GET':
-        form = forms.PhotoForm(instance=photo)
+    # if request.method == 'GET':
+    #     form = forms.UpdatePhotoForm(instance=photo)
     
-    if request.method == 'POST':
-        form = forms.PhotoForm(request.POST, instance=photo)
-        if form.is_valid():
-            alter_photo = form.save(commit=False)
-            photo.move_to_category(alter_photo.category.name)
-            alter_photo.save()
-
-
+    # if request.method == 'POST':
+    #     form = forms.PhotoForm(request.POST, instance=photo)
+    #     if form.is_valid():
+    #         alter_photo = form.save(commit=False)
+    #         photo.move_to_category(alter_photo.category.name)
+    #         alter_photo.save()
 
     return render(request, template, {
         'photo': photo,
-        'form': form,
     })

@@ -52,6 +52,7 @@ class Photo(models.Model):
                 case PhotoStatus.DUPLICATED:
                     duplicates, created = Category.objects.get_or_create(name=settings.DUPLICATES_DIR)
                     self.category = duplicates
+                    self.title = f'{self.title}_duplicated'
 
         return super().save(*args, **kwargs)
 

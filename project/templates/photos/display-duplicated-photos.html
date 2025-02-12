@@ -8,7 +8,9 @@
 
 
 {% block content %}
+<h1>Posiadasz {{ photos_num }} Duplikatów!</h1>
+
 {% for photo in photos %}
-  <img src="{{ photo.get_url }}" alt="{{ photo.name }}">
+  <img src="{{ photo.image.url }}" alt="{{ photo.image.name }}">
 {% endfor %}
 {% endblock content %}
