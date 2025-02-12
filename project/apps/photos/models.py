@@ -3,10 +3,11 @@ from django.conf import settings
 
 import shutil
 import os
+from enum import IntEnum
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255, primary_key=True)
+    name = models.CharField(max_length=255, unique=True)
 
     def __str__(self):
         return self.name
@@ -15,34 +16,35 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
 
+class PhotoStatus(IntEnum):
+    TRACKED = 0
+    LOST = 1
+    DUPLICATED = 2
+
+
+def upload_to(instance, filename):
+    if instance.status == PhotoStatus.DUPLICATED:
+        return os.path.join(settings.DUPLICATES_URL, filename)
+    return os.path.join(settings.NO_CATEGORY_URL, filename)
+
 
 class Photo(models.Model):
-    EXTENSIONS = ('.png', '.jpg', '.jpeg')
+    PHOTO_STATUS = [
+        (PhotoStatus.TRACKED, 'TRACKED'),
+        (PhotoStatus.LOST, 'LOST'),
+        (PhotoStatus.DUPLICATED, 'DUPLICATED')
+    ]
 
-    name = models.CharField(max_length=255, primary_key=True)
-    watched = models.BooleanField(default=True)
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to=settings.MEDIA_ROOT)
+    status = models.IntegerField(choices=PHOTO_STATUS, default=PhotoStatus.TRACKED)
     category = models.ForeignKey(Category, on_delete=models.RESTRICT, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
-    def get_url(self):
-        if self.category:
-            return f'{settings.MEDIA_URL}/{self.category.name}/{self.name}'
-        return f'{settings.NO_CATEGORY_URL}/{self.name}'
-    
-    def move_to_category(self, dest_dir):
-        src_file_path = self.get_url()
-
-        if dest_dir == settings.NO_CATEGORY_NAME:
-            dest_file_path = os.path.join(settings.NO_CATEGORY_ROOT, self.name)
-        else:
-            dest_file_path = os.path.join(settings.WITH_CATEGORY_ROOT, self.category.name, self.name)
-
-        try:
-            shutil.move(src_file_path, dest_file_path)
-            print(f"Moved: {src_file_path} -> {dest_file_path}")
-        except shutil.Error as e:
-            print(f"Error moving {src_file_path}: {e}")
+    def save(self, *args, **kwargs):
+        if Photo.objects.filter(image=self.image.name).exists():
+            self.status = PhotoStatus.DUPLICATED
+        return super().save(*args, **kwargs)
 
     def __str__(self):
-        if self.category:
-            return f'{self.category.name} - {self.name}'
-        return f'{settings.NO_CATEGORY_NAME} - {self.name}'
+        return f'{self.title}'

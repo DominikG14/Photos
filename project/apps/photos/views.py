@@ -28,12 +28,20 @@ def create_category(request: HttpRequest):
 
 def import_photos(request: HttpRequest):
     template = get_template(app=urls.app_name)
+    print(request.FILES)
 
-    ncp = NoCategoryPhotos()
+    if request.method == 'GET':
+        form = forms.UploadPhotoForm()
 
-    ncp.create_dir()
-    ncp.move_files()
-    return render(request, template, {})
+    if request.method == 'POST':
+        form = forms.UploadPhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            form = forms.UploadPhotoForm()
+
+    return render(request, template, {
+        'form': form,
+    })
 
 
 def display_photos(request: HttpRequest):

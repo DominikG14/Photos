@@ -8,4 +8,9 @@
 
 
 {% block content %}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="Dodaj zdjęcie">
+</form>
 {% endblock content %}
