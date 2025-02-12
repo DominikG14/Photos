@@ -3,14 +3,20 @@
 
 
 {% block static %}
-<link rel="stylesheet" href="{% static 'photos/styles/display-photos.css' %}">
+<link rel="stylesheet" href="{% static 'photos/styles/display-all-photos.css' %}">
 {% endblock static %}
 
 
 {% block content %}
 <h1>Posiadasz {{ photos_num }} Zdjęć!</h1>
 
-{% for photo in photos %}
-  <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
-{% endfor %}
+<main class="main">
+<section class="photos">
+  {% for photo in photos %}
+    <img class="photos__photo" src="{{ photo.image.url }}" alt="{{ photo.title }}">
+  {% endfor %}
+</section>
+</main>
+
+
 {% endblock content %}

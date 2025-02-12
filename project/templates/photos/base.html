@@ -1,13 +1,39 @@
 {% extends 'global/base.html' %}
+{% load static %}
 
 
 {% block base_static %}
+<link rel="stylesheet" href="{% static 'photos/styles/base.css' %}">
+<link rel="stylesheet" href="{% static 'photos/styles/side-nav.css' %}">
   {% block static %}
   {% endblock static %}
 {% endblock base_static %}
 
 
 {% block base_content %}
+<header class="header">
+
+</header>
+
+<aside class="side-nav">
+  <nav class="side-nav__options">
+    <div class="side-nav__options__option side-nav__options__option--upload">
+      <img class="side-nav__options__option__icon" src="" alt="">
+      <div class="side-nav__options__option__name"></div>
+    </div>
+
+    <div class="side-nav__options__option side-nav__options__option--display">
+      
+    </div>
+
+    <div class="side-nav__options__option side-nav__options__option--categories">
+      
+    </div>
+  </nav>
+</aside>
+
+<div class="content">
   {% block content %}
   {% endblock content %}
+</div>
 {% endblock base_content %}
