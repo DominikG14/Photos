@@ -6,4 +6,4 @@ __pycache__/
 .env
 /project/db.sqlite3
 
-/project/media/*
+/project/media/*/*

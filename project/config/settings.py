@@ -73,19 +73,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-NO_CATEGORY_NAME = 'Bez Kategorii'
-NO_CATEGORY_PATH = os.path.join('Zdjęcia', NO_CATEGORY_NAME)
-NO_CATEGORY_ROOT = os.path.join(MEDIA_ROOT, NO_CATEGORY_PATH)
-NO_CATEGORY_URL = os.path.join(MEDIA_URL, NO_CATEGORY_PATH)
+NO_CATEGORY_DIR = 'Bez Kategorii'
+DUPLICATES_DIR = 'Duplikaty'
 
-WITH_CATEGORY_NAME = 'Kategorie'
-WITH_CATEGORY_PATH = os.path.join('Zdjęcia', WITH_CATEGORY_NAME)
-WITH_CATEGORY_ROOT = os.path.join(MEDIA_ROOT, WITH_CATEGORY_PATH)
-WITH_CATEGORY_URL = os.path.join(MEDIA_URL, WITH_CATEGORY_PATH)
-
-UPLOADED_NAME = 'Wrzucone'
-UPLOADED_ROOT = os.path.join(MEDIA_ROOT, UPLOADED_NAME)
-UPLOADED_URL = os.path.join(MEDIA_URL, UPLOADED_NAME)
+PHOTOS_DATETIME_FORMAT = '%d.%m.%Y'
 
 
 # Database

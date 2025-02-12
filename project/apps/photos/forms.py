@@ -1,6 +1,8 @@
 from django import forms
 from . import models
 
+import os
+
 
 class CategoryForm(forms.ModelForm):
     class Meta:
@@ -11,11 +13,19 @@ class CategoryForm(forms.ModelForm):
         }
 
 
-class PhotoForm(forms.ModelForm):
+class UploadPhotoForm(forms.ModelForm):
     class Meta:
         model = models.Photo
-        fields = '__all__'
-        labels = {
-            'name': 'Nazwa zdjęcia',
-            'category': 'Kategoria',
-        }
+        fields = ['image']
+        labels = {}
+    
+    def save(self, commit: bool = True):
+        photo = super().save(commit=False)
+
+        photo.filename = photo.image.name
+        photo.title, extension = os.path.splitext(photo.filename)
+
+        if commit:
+            photo.save()
+        
+        return photo
