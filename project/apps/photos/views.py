@@ -6,7 +6,6 @@ from utils.views import get_template
 from . import urls
 from . import forms
 from .models import Photo
-from .utils.no_category import NoCategoryPhotos
 
 
 def create_category(request: HttpRequest):
@@ -28,7 +27,6 @@ def create_category(request: HttpRequest):
 
 def import_photos(request: HttpRequest):
     template = get_template(app=urls.app_name)
-    print(request.FILES)
 
     if request.method == 'GET':
         form = forms.UploadPhotoForm()

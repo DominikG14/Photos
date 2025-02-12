@@ -19,7 +19,9 @@ class UploadPhotoForm(forms.ModelForm):
     
     def save(self, commit: bool = True):
         photo = super().save(commit=False)
+
         photo.title = photo.image.name
+        photo.filename = photo.image.name
 
         if commit:
             photo.save()

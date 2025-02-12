@@ -73,13 +73,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-NO_CATEGORY_NAME = 'Bez Kategorii'
-NO_CATEGORY_ROOT = os.path.join(MEDIA_ROOT, NO_CATEGORY_NAME)
-NO_CATEGORY_URL = os.path.join(MEDIA_URL, NO_CATEGORY_NAME)
-
-DUPLICATES_NAME = 'Duplikaty'
-DUPLICATES_ROOT = os.path.join(MEDIA_ROOT, DUPLICATES_NAME)
-DUPLICATES_URL = os.path.join(MEDIA_URL, DUPLICATES_NAME)
+NO_CATEGORY_DIR = 'Bez Kategorii'
+DUPLICATES_DIR = 'Duplikaty'
 
 
 # Database
