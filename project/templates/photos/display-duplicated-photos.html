@@ -11,6 +11,6 @@
 <h1>Posiadasz {{ duplicates_num }} Duplikatów!</h1>
 
 {% for photo in duplicates %}
-  <img src="{{ photo.image.url }}" alt="{{ photo.image.name }}">
+  <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
 {% endfor %}
 {% endblock content %}

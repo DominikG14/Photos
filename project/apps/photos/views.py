@@ -5,7 +5,7 @@ from utils.views import get_template
 
 from . import urls
 from . import forms
-from .models import Photo, PhotoStatus
+from .models import Photo
 
 
 def create_category(request: HttpRequest):
@@ -45,7 +45,7 @@ def import_single_photo(request: HttpRequest):
 def display_all_photos(request: HttpRequest):
     template = get_template(app=urls.app_name)
 
-    photos = Photo.objects.exclude(status=PhotoStatus.DUPLICATED)
+    photos = Photo.objects.exclude(status=Photo.Status.DUPLICATED)
 
     return render(request, template, {
         'photos_num': len(photos),
@@ -56,7 +56,7 @@ def display_all_photos(request: HttpRequest):
 def display_duplicated_photos(request: HttpRequest):
     template = get_template(app=urls.app_name)
 
-    duplicates = Photo.objects.filter(status=PhotoStatus.DUPLICATED)
+    duplicates = Photo.objects.filter(status=Photo.Status.DUPLICATED)
 
     return render(request, template, {
         'duplicates_num': len(duplicates),
