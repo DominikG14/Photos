@@ -1,0 +1,42 @@
+// Padding
+@mixin Horizontal_Padding($value){
+  padding-top: $value;
+  padding-bottom: $value;
+}
+
+@mixin Vertical_Padding($value){
+  padding-left: $value;
+  padding-right: $value;
+}
+
+// Margin
+@mixin Horizontal_Margin($value){
+  margin-top: $value;
+  margin-bottom: $value;
+}
+
+@mixin Vertical_Margin($value){
+  margin-left: $value;
+  margin-right: $value;
+}
+
+// Border
+@mixin RightSide_BorderRadius($radius){
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin TopSide_BorderRadius($radius){
+  border-top-right-radius: $radius;
+  border-top-left-radius: $radius;
+}
+
+@mixin LeftSide_BorderRadius($radius){
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin BottomSide_BorderRadius($radius){
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}

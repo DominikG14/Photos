@@ -51,6 +51,13 @@ table {
   border-spacing: 0;
 }
 
+a {
+  all: unset;
+}
+a:hover {
+  cursor: pointer;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :has(:target) {
     scroll-behavior: smooth;

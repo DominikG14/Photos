@@ -1,0 +1,17 @@
+@mixin SquareShape($side){
+  width: $side;
+  height: $side;
+}
+
+
+@mixin RectangleShape($width, $height){
+  width: $width;
+  height: $height;
+}
+
+
+@mixin CircleShape($radius){
+  width: $radius;
+  height: $radius;
+  border-radius: $radius;
+}

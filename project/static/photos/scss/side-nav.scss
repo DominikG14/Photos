@@ -1,6 +1,71 @@
 @use "sass" as *;
 
 
+$upload-clr: rgb(36, 183, 36);
+$display-clr: blue;
+$categories-clr: red;
+
+
 .side-nav {
-  background: red;
+  background: gray;
+
+  &__options {
+    @include FillWholeSpace();
+    @include ColumnLayout();
+
+    &__option {
+      $underline-height: .2rem;
+
+      height: 3rem;
+      justify-content: space-between;
+
+      @include ColumnLayout();
+
+      &--upload {
+        background: $upload-clr;
+      }
+
+      &__main {
+        height: calc(100% - $underline-height);
+        align-items: center;
+
+        @include Vertical_Padding(.5rem);
+        @include RowLayout(1rem);
+
+        &__icon {
+          height: 80%;
+          @include Transition();
+        }
+  
+        &__name {
+          font-weight: bold;
+          color: white;
+          text-align: center;
+
+          @include Move($horizontal: -$underline-height / 2);
+          @include Transition();
+        }
+      }
+
+      &:hover &__underline {
+        width: 100%;
+      }
+
+      &:hover &__main__icon {
+        @include Highlight();
+      }
+
+      &:hover &__main__name {
+        @include Highlight_Text();
+      }
+
+      &__underline {
+        width: 0;
+        background: white;
+        height: $underline-height;
+
+        @include Transition();
+      }
+    }
+  }
 }

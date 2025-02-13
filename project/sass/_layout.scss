@@ -1,0 +1,29 @@
+@mixin FillWholeSpace(){
+  width: 100%;
+  height: 100%;
+}
+
+
+@mixin ColumnLayout($gap: 0){
+  display: flex;
+  gap: $gap;
+  flex-direction: column;
+}
+
+
+@mixin RowLayout($gap: 0, $reverse: false){
+  display: flex;
+  gap: $gap;
+
+  @if $reverse {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+}
+
+
+@mixin Move($vertical: 0, $horizontal: 0){
+  position: relative;
+  left: $vertical;
+  top: -$horizontal;
+}

@@ -1,0 +1,10 @@
+@mixin CoverBackgroundImage(){
+  object-fit: cover;
+  background-size: cover;
+}
+
+
+@mixin CenterBackgroundImage(){
+  object-position: center;
+  background-position: center;
+}

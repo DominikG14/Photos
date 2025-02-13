@@ -8,12 +8,12 @@
 
 
 {% block content %}
-<h1>Posiadasz {{ photos_num }} Zdjęć!</h1>
-
 <main class="main">
 <section class="photos">
   {% for photo in photos %}
-    <img class="photos__photo" src="{{ photo.image.url }}" alt="{{ photo.title }}">
+  <a class="photos__photo" href="{% url 'photos:inspect_photo' photo.title %}">
+    <img class="photos__photo__image" src="{{ photo.image.url }}" alt="{{ photo.title }}">
+  </a>
   {% endfor %}
 </section>
 </main>

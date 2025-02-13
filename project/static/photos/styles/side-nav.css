@@ -1,3 +1,56 @@
 .side-nav {
-  background: red;
+  background: gray;
+}
+.side-nav__options {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 0;
+  flex-direction: column;
+}
+.side-nav__options__option {
+  height: 3rem;
+  justify-content: space-between;
+  display: flex;
+  gap: 0;
+  flex-direction: column;
+}
+.side-nav__options__option--upload {
+  background: rgb(36, 183, 36);
+}
+.side-nav__options__option__main {
+  height: calc(100% - 0.2rem);
+  align-items: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  gap: 1rem;
+}
+.side-nav__options__option__main__icon {
+  height: 80%;
+  transition: 300ms ease-in-out;
+}
+.side-nav__options__option__main__name {
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  position: relative;
+  left: 0;
+  top: 0.1rem;
+  transition: 300ms ease-in-out;
+}
+.side-nav__options__option:hover .side-nav__options__option__underline {
+  width: 100%;
+}
+.side-nav__options__option:hover .side-nav__options__option__main__icon {
+  filter: drop-shadow(1px 1px 0.5rem white);
+}
+.side-nav__options__option:hover .side-nav__options__option__main__name {
+  text-shadow: 1px 1px 0.5rem white;
+}
+.side-nav__options__option__underline {
+  width: 0;
+  background: white;
+  height: 0.2rem;
+  transition: 300ms ease-in-out;
 }
