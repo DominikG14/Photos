@@ -3,19 +3,47 @@
 
 .main {
   @include FillWholeSpace();
-  background: black;
+}
+
+.stats {
+  border: .2rem solid white;
+  border-left: none;
+  border-right: none;
+  background: rgb(0, 0, 0, 0.5);
+
+  @include RowLayout();
+  justify-content: space-evenly;
+
+  &__stat {
+    place-content: center;
+    text-align: center;
+
+    @include ColumnLayout();
+
+    &__count {
+      $rect-height: 2rem;
+
+      background: pink;
+      border-radius: $rect-height / 2;
+
+      @include RectangleShape(100%, $rect-height);
+    }
+  }
 }
 
 .photos {
-  display: flex;
   padding: 1px;
+
+
+  @include RowLayout();
 
   &__photo {
     @include SquareShape(10rem);
-    border: black 2px solid;
+
+    box-sizing: border-box;
 
     &:hover {
-      border-color: white;
+      border: white 2px solid;
       transition: 100ms ease-in-out;
     }
 

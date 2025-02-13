@@ -2,12 +2,13 @@
 
 
 $upload-clr: rgb(36, 183, 36);
-$display-clr: blue;
-$categories-clr: red;
+$display-clr: rgb(110, 110, 226);
+$categories-clr: rgb(222, 111, 111);
 
 
 .side-nav {
-  background: gray;
+  border-right: .2rem solid white;
+  background: rgb(0, 0, 0, 0.5);
 
   &__options {
     @include FillWholeSpace();
@@ -25,22 +26,36 @@ $categories-clr: red;
         background: $upload-clr;
       }
 
+      &--display {
+        background: $display-clr;
+      }
+
+      &--categories {
+        background: $categories-clr;
+      }
+
       &__main {
+        $icon-width: 2rem;
+
         height: calc(100% - $underline-height);
         align-items: center;
 
         @include Vertical_Padding(.5rem);
-        @include RowLayout(1rem);
+        @include GridLayout(1rem);
+        grid-template-areas: "icon name";
+        grid-template-columns: $icon-width calc(100% - $icon-width);
 
         &__icon {
+          grid-area: icon;
           height: 80%;
+          place-self: center;
           @include Transition();
         }
   
         &__name {
+          grid-area: name;
           font-weight: bold;
           color: white;
-          text-align: center;
 
           @include Move($horizontal: -$underline-height / 2);
           @include Transition();

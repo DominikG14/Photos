@@ -1,11 +1,12 @@
 from django.http import HttpRequest
 from django.shortcuts import render
+from django.conf import settings
 
 from utils.views import get_template
 
 from . import urls
 from . import forms
-from .models import Photo
+from .models import Photo, Category
 
 
 def create_category(request: HttpRequest):
@@ -47,8 +48,18 @@ def display_all_photos(request: HttpRequest):
 
     photos = Photo.objects.exclude(status=Photo.Status.DUPLICATED)
 
+    photos_all = len(photos)
+
+    no_category, created = Category.objects.get_or_create(name=settings.NO_CATEGORY_DIR)
+    photos_no_category = len(Photo.objects.filter(category=no_category))
+
+    duplicates, created = Category.objects.get_or_create(name=settings.DUPLICATES_DIR)
+    photos_duplicates = len(Photo.objects.filter(category=duplicates))
+
     return render(request, template, {
-        'photos_num': len(photos),
+        'photos_all': photos_all,
+        'photos_no_category': photos_no_category,
+        'photos_duplicates': photos_duplicates,
         'photos': photos,
     })
 

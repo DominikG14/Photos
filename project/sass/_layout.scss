@@ -4,6 +4,12 @@
 }
 
 
+@mixin GridLayout($gap: 0){
+  display: grid;
+  gap: $gap;
+}
+
+
 @mixin ColumnLayout($gap: 0){
   display: flex;
   gap: $gap;
