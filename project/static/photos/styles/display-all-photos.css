@@ -62,6 +62,12 @@ body > content {
 .stats__photo-type__stat:hover {
   box-shadow: 1px 1px 0.5rem white;
 }
+.stats__photo-type__stat--current {
+  box-shadow: 1px 1px 0.5rem white;
+}
+.stats__photo-type__stat--current .stats__photo-type__stat__underline {
+  width: calc(100% + 1rem);
+}
 .stats__photo-type__stat__main {
   display: flex;
   gap: 0;
@@ -119,13 +125,13 @@ body > content {
   gap: 0.5rem;
 }
 .photos__photo {
+  transition: 300ms ease-in-out;
   width: 10rem;
   height: 10rem;
   box-sizing: border-box;
 }
 .photos__photo:hover {
-  border: #4909c2 2px solid;
-  transition: 100ms ease-in-out;
+  box-shadow: 1px 1px 0.5rem white;
 }
 .photos__photo__image {
   width: 100%;

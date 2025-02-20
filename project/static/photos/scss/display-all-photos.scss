@@ -1,151 +1,33 @@
 @use "sass" as *;
-@use "base";
+@use "display-all-photos/stats";
+@use "display-all-photos/photos";
 
 
 .main {
   @include FillWholeSpace();
 }
 
-$stats-height: 15rem;
-$stat-padding: .5rem;
-
-
-// Stats
-@mixin Stats(){
-  background: base.$main-clr-dark;
-  height: $stats-height;
-  padding: 1.5rem;
-
-  @include ColumnLayout();
-  justify-content: space-between;
-}
-
-
-@mixin Stats__PhotoType(){
-  @include RowLayout();
-  justify-content: space-evenly;
-}
-
-
-@mixin Stats__PhotoType__Stat(){
-  background: base.$main-clr;
-  padding: $stat-padding;
-  padding-bottom: 0;
-  border-radius: .5rem;
-  width: fit-content;
-
-  @include ColumnLayout();
-  justify-content: space-between;
-  gap: .5rem;
-
-  &:hover &__underline {
-    width: calc(100% + 2*$stat-padding);
-  }
-
-  @include Transition();
-
-  &:hover {
-    @include Highlight_Box();
-  }
-}
-
-
-@mixin Stats__PhotoType__Stat__Underline(){
-  width: 0;
-  background: white;
-  height: .2rem;
-
-  @include Move($x: -$stat-padding);
-  @include Transition();
-}
-
-
-@mixin Stats__PhotoType__Stat__Main(){
-  @include RowLayout();
-  gap: .5rem;
-}
-
-
-@mixin Stats__PhotoType__Stat__Main__Icon(){
-  background: white;
-  padding: .2rem;
-
-  @include CircleShape(2rem);
-  border-radius: .5rem;
-}
-
-
-@mixin Stats__PhotoType__Stat__Main__RightSide(){
-  @include ColumnLayout();
-  justify-content: space-between;
-}
-
-
-@mixin Stats__PhotoType__Stat__Main__RightSide__Name(){
-  font-variant: small-caps;
-  font-weight: bold;
-
-  @include Transition();
-}
-
-
-@mixin Stats__PhotoType__Stat__Main__RightSide__Count(){
-  font-size: 1.5rem;
-  background: white;
-  color: base.$main-clr;
-  
-  align-self: center;
-  @include CircleShape(1.5rem);
-  @include CenterText();
-}
-
 
 // Stats structure
-.stats {
-  @include Stats();
-
-  &__photo-type {@include Stats__PhotoType();
-    &__stat { @include Stats__PhotoType__Stat();
-      &__main { @include Stats__PhotoType__Stat__Main();
-        &__icon { @include Stats__PhotoType__Stat__Main__Icon(); }
-        &__right-side { @include Stats__PhotoType__Stat__Main__RightSide();
-          &__name { @include Stats__PhotoType__Stat__Main__RightSide__Name()}
-          &__count { @include Stats__PhotoType__Stat__Main__RightSide__Count()}
+.stats { @include stats.Stats();
+  &__photo-type { @include stats.Stats__PhotoType();
+    &__stat { @include stats.Stats__PhotoType__Stat();
+      &__main { @include stats.Stats__PhotoType__Stat__Main();
+        &__icon { @include stats.Stats__PhotoType__Stat__Main__Icon(); }
+        &__right-side { @include stats.Stats__PhotoType__Stat__Main__RightSide();
+          &__name { @include stats.Stats__PhotoType__Stat__Main__RightSide__Name()}
+          &__count { @include stats.Stats__PhotoType__Stat__Main__RightSide__Count()}
         }
       }
-      &__underline { @include Stats__PhotoType__Stat__Underline(); }
+      &__underline { @include stats.Stats__PhotoType__Stat__Underline(); }
     }
   }
 }
 
 
-// Photos
-.photos {
-  background: {
-    color: white;
-    image: url(../images/waves-top.svg);
-    repeat: no-repeat;
-    position: top;
-    size: cover;
-  }
-  height: calc(100% - $stats-height);
-
-  @include RowLayout(.5rem);
-
-  &__photo {
-    @include SquareShape(10rem);
-
-    box-sizing: border-box;
-
-    &:hover {
-      border: #4909c2 2px solid;
-      transition: 100ms ease-in-out;
-    }
-
-    &__image {
-      @include FillWholeSpace();
-      @include CoverBackgroundImage();
-      @include CenterBackgroundImage();
-    }
+// Photos structure
+.photos { @include photos.Photos();
+  &__photo { @include photos.Photos__Photo(); 
+    &__image { @include photos.Photos__Photo__Image(); }
   }
 }

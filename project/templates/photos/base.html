@@ -15,37 +15,7 @@
 
 </header>
 
-<aside class="side-nav">
-  <nav class="side-nav__options">
-    <a href="" class="side-nav__options__option side-nav__options__option--display">
-      <div class="side-nav__options__option__main">
-        <img class="side-nav__options__option__main__icon" src="{% static 'photos/images/display-icon.svg' %}" alt="">
-        <div class="side-nav__options__option__main__name">Galeria</div>
-      </div>
-
-      <div class="side-nav__options__option__underline"></div>
-    </a>
-
-    <a href="" class="side-nav__options__option side-nav__options__option--categories">
-      <div class="side-nav__options__option__main">
-        <img class="side-nav__options__option__main__icon" src="{% static 'photos/images/categories-icon.svg' %}" alt="">
-        <div class="side-nav__options__option__main__name">Kategorie</div>
-      </div>
-
-      <div class="side-nav__options__option__underline"></div>
-    </a>
-
-    <a href="" class="side-nav__options__option side-nav__options__option--upload">
-      <div class="side-nav__options__option__main">
-        <img class="side-nav__options__option__main__icon" src="{% static 'photos/images/upload-icon.svg' %}" alt="">
-        <div class="side-nav__options__option__main__name">Dodaj Zdjęcia</div>
-      </div>
-
-      <div class="side-nav__options__option__underline"></div>
-    </a>
-
-  </nav>
-</aside>
+{% include 'photos/components/side-nav.html' %}
 
 <div class="content">
   {% block content %}

@@ -1,0 +1,35 @@
+@use "sass" as *;
+@use "../base";
+@use "stats";
+
+
+@mixin Photos(){
+  background: {
+    color: white;
+    image: url(../images/waves-top.svg);
+    repeat: no-repeat;
+    position: top;
+    size: cover;
+  }
+  height: calc(100% - stats.$stats-height);
+
+  @include RowLayout(.5rem);
+}
+
+
+@mixin Photos__Photo(){
+  @include Transition();
+  @include SquareShape(10rem);
+  box-sizing: border-box;
+
+  &:hover {
+    @include Highlight_Box();
+  }
+}
+
+
+@mixin Photos__Photo__Image(){
+  @include FillWholeSpace();
+  @include CoverBackgroundImage();
+  @include CenterBackgroundImage();
+}

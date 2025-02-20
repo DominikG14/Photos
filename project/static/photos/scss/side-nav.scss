@@ -1,81 +1,101 @@
 @use "sass" as *;
+@use "base";
 
 
-$upload-clr: rgb(36, 183, 36);
-$display-clr: rgb(110, 110, 226);
-$categories-clr: rgb(222, 111, 111);
+$underline-height: .2rem;
+$icon-width: 2rem;
 
 
-.side-nav {
-  &__options {
-    @include FillWholeSpace();
-    @include ColumnLayout();
+@mixin SideNav(){
 
-    &__option {
-      $underline-height: .2rem;
-      height: 3rem;
+}
 
-      @include ColumnLayout();
-      justify-content: space-between;
 
-      &--upload {
-        background: $upload-clr;
-      }
+@mixin SideNav__Options(){
+  background: base.$main-clr-dark;
+  @include ColumnLayout();
+}
 
-      &--display {
-        background: $display-clr;
-      }
 
-      &--categories {
-        background: $categories-clr;
-      }
+@mixin SideNav__Options__Option(){
+  height: 3rem;
 
-      &__main {
-        height: calc(100% - $underline-height);
-        align-items: center;
+  @include ColumnLayout();
+  justify-content: space-between;
 
-        @include X_Padding(.5rem);
-        @include GridLayout(1rem);
-        $icon-width: 2rem;
-        grid-template-areas: "icon name";
-        grid-template-columns: $icon-width calc(100% - $icon-width);
 
-        &__icon {
-          grid-area: icon;
-          justify-self: center;
-          height: 80%;
-          @include Transition();
-        }
-  
-        &__name {
-          grid-area: name;
-          font-weight: bold;
-          color: white;
+  &:hover &__underline {
+    width: 100%;
+  }
 
-          @include Move($y: $underline-height / 2);
-          @include Transition();
-        }
-      }
+  &:hover &__main__icon {
+    @include Highlight();
+  }
 
-      &:hover &__underline {
-        width: 100%;
-      }
+  &:hover &__main__name {
+    @include Highlight_Text();
+  }
+}
 
-      &:hover &__main__icon {
-        @include Highlight();
-      }
 
-      &:hover &__main__name {
-        @include Highlight_Text();
-      }
+@mixin SideNav__Options__Option__Underline(){
+  width: 0;
+  background: white;
+  height: $underline-height;
 
-      &__underline {
-        width: 0;
-        background: white;
-        height: $underline-height;
+  @include Transition();
+}
 
-        @include Transition();
+
+@mixin SideNav__Options__Option__Main(){
+  height: calc(100% - $underline-height);
+  align-items: center;
+
+  @include X_Padding(.5rem);
+  @include GridLayout(1rem);
+  grid-template-areas: "icon name";
+  grid-template-columns: $icon-width calc(100% - $icon-width);
+}
+
+
+@mixin SideNav__Options__Option__Main__Icon(){
+  grid-area: icon;
+  justify-self: center;
+  height: 80%;
+  @include Transition();
+}
+
+
+@mixin SideNav__Options__Option__Main__Name(){
+  grid-area: name;
+  font-weight: bold;
+  color: white;
+
+  @include Move($y: $underline-height / 2);
+  @include Transition();
+}
+
+
+@mixin SideNav__Bottom(){
+  width: 100%;
+}
+
+
+// SideNav Structure
+.side-nav { @include SideNav();
+  &__bottom { @include SideNav__Bottom(); }
+  &__options { @include SideNav__Options();
+    &__option { @include SideNav__Options__Option();
+      &__underline { @include SideNav__Options__Option__Underline(); }
+      &__main { @include SideNav__Options__Option__Main();
+        &__icon { @include SideNav__Options__Option__Main__Icon(); }
+        &__name { @include SideNav__Options__Option__Main__Name(); }
       }
     }
   }
+}
+
+
+.header {
+  background: base.$main-clr-dark;
 }
