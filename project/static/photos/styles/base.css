@@ -1,10 +1,13 @@
+:root {
+  --main-clr: #4909c2;
+  --main-clr-dark: #330688;
+  --bg-clr: white;
+  --font-clr: white;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url(../images/background.jpg);
-  background-repeat: no-repeat;
-  color: white;
-  object-fit: cover;
-  background-size: cover;
+  color: var(--font-clr);
   display: grid;
   gap: 0;
   grid-template-areas: "header header" "side-nav content";

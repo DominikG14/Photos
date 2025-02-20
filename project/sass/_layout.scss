@@ -28,8 +28,15 @@
 }
 
 
-@mixin Move($vertical: 0, $horizontal: 0){
+@mixin Move($x: 0, $y: 0){
   position: relative;
-  left: $vertical;
-  top: -$horizontal;
+  left: $x;
+  bottom: $y;
+}
+
+
+@mixin CenterText(){
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

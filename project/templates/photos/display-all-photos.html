@@ -10,20 +10,50 @@
 {% block content %}
 <main class="main">
 <section class="stats">
-  <a href="" class="stats__stat stats__stat--no-category">
-    <div class="stats__stat__name">Bez Kategorii</div>
-    <div class="stats__stat__count">{{ photos_no_category }}</div>
-  </a>
+  <div class="stats__photo-type">
+    <a href="" class="stats__photo-type__stat stats__photo-type__stat--all">
+      <div class="stats__photo-type__stat__main">
+        <img class="stats__photo-type__stat__main__icon" src="{% static 'photos/images/all-photos-icon.svg' %}" alt="">
+      
+        <div class="stats__photo-type__stat__main__right-side">
+          <div class="stats__photo-type__stat__main__right-side__name">Wszystkich Zdjęć</div>
+          <div class="stats__photo-type__stat__main__right-side__count">{{ photos_all }}</div>
+        </div>
+      </div>
 
-  <a href="" class="stats__stat stats__stat--duplicates">
-    <div class="stats__stat__name">Duplikaty</div>
-    <div class="stats__stat__count">{{ photos_duplicates }}</div>
-  </a>
+      <div class="stats__photo-type__stat__underline"></div>
+    </a>
 
-  <a href="" class="stats__stat stats__stat--all">
-    <div class="stats__stat__name">Wszystkich Zdjęć</div>
-    <div class="stats__stat__count">{{ photos_all }}</div>
-  </a>
+    <a href="" class="stats__photo-type__stat stats__photo-type__stat--no-category">
+      <div class="stats__photo-type__stat__main">
+        <img class="stats__photo-type__stat__main__icon" src="{% static 'photos/images/all-photos-icon.svg' %}" alt="">
+      
+        <div class="stats__photo-type__stat__main__right-side">
+          <div class="stats__photo-type__stat__main__right-side__name">Bez Kategorii</div>
+          <div class="stats__photo-type__stat__main__right-side__count">{{ photos_no_category }}</div>
+        </div>
+      </div>
+
+      <div class="stats__photo-type__stat__underline"></div>
+    </a>
+
+    <a href="" class="stats__photo-type__stat stats__photo-type__stat--duplicates">
+      <div class="stats__photo-type__stat__main">
+        <img class="stats__photo-type__stat__main__icon" src="{% static 'photos/images/all-photos-icon.svg' %}" alt="">
+      
+        <div class="stats__photo-type__stat__main__right-side">
+          <div class="stats__photo-type__stat__main__right-side__name">Duplikaty</div>
+          <div class="stats__photo-type__stat__main__right-side__count">{{ photos_duplicates }}</div>
+        </div>
+      </div>
+
+      <div class="stats__photo-type__stat__underline"></div>
+    </a>
+  </div>
+
+  <div class="stats__photo-size">
+
+  </div>
 </section>
 
 <section class="photos">

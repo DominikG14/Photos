@@ -1,21 +1,21 @@
 // Padding
-@mixin Horizontal_Padding($value){
+@mixin Y_Padding($value){
   padding-top: $value;
   padding-bottom: $value;
 }
 
-@mixin Vertical_Padding($value){
+@mixin X_Padding($value){
   padding-left: $value;
   padding-right: $value;
 }
 
 // Margin
-@mixin Horizontal_Margin($value){
+@mixin Y_Margin($value){
   margin-top: $value;
   margin-bottom: $value;
 }
 
-@mixin Vertical_Margin($value){
+@mixin X_Margin($value){
   margin-left: $value;
   margin-right: $value;
 }
@@ -39,4 +39,15 @@
 @mixin BottomSide_BorderRadius($radius){
   border-bottom-right-radius: $radius;
   border-bottom-left-radius: $radius;
+}
+
+
+@mixin Y_Border($value) {
+  border-top-width: $value;
+  border-bottom-width: $value;
+}
+
+@mixin X_Border($value) {
+  border-left-width: $value;
+  border-right-width: $value;
 }

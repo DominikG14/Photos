@@ -1,7 +1,3 @@
-.side-nav {
-  border-right: 0.2rem solid white;
-  background: rgba(0, 0, 0, 0.5);
-}
 .side-nav__options {
   width: 100%;
   height: 100%;
@@ -11,10 +7,10 @@
 }
 .side-nav__options__option {
   height: 3rem;
-  justify-content: space-between;
   display: flex;
   gap: 0;
   flex-direction: column;
+  justify-content: space-between;
 }
 .side-nav__options__option--upload {
   background: rgb(36, 183, 36);
@@ -37,8 +33,8 @@
 }
 .side-nav__options__option__main__icon {
   grid-area: icon;
+  justify-self: center;
   height: 80%;
-  place-self: center;
   transition: 300ms ease-in-out;
 }
 .side-nav__options__option__main__name {
@@ -47,7 +43,7 @@
   color: white;
   position: relative;
   left: 0;
-  top: 0.1rem;
+  bottom: 0.1rem;
   transition: 300ms ease-in-out;
 }
 .side-nav__options__option:hover .side-nav__options__option__underline {

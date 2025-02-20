@@ -3,10 +3,14 @@
 }
 
 
-@mixin Highlight_Text($color: white, $v-offset: 1px, $h-offset: 1px, $blur-radius: .5rem ){
-  text-shadow: $v-offset $h-offset $blur-radius $color;
+@mixin Highlight_Text($color: white, $y: 1px, $x: 1px, $blur-radius: .5rem ){
+  text-shadow: $y $x $blur-radius $color;
 }
 
-@mixin Highlight($color: white, $v-offset: 1px, $h-offset: 1px, $blur-radius: .5rem ){
-  filter: drop-shadow($v-offset $h-offset $blur-radius $color);
+@mixin Highlight_Box($color: white, $y: 1px, $x: 1px, $blur-radius: .5rem) {
+  box-shadow: $x $y $blur-radius $color;
+}
+
+@mixin Highlight($color: white, $y: 1px, $x: 1px, $blur-radius: .5rem ){
+  filter: drop-shadow($y $x $blur-radius $color);
 }
