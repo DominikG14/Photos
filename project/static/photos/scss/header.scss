@@ -1,0 +1,36 @@
+@use "sass" as *;
+@use "base";
+
+
+@mixin Header(){
+  background: base.$main-clr-dark;
+  border-bottom: .2rem solid white;
+  
+  @include X_Padding(1rem);
+  @include RowLayout();
+  gap: 1rem;
+  align-items: center;
+}
+
+@mixin Header__SideNavButton(){
+  @include SquareShape(1.5rem);
+}
+
+@mixin Header__Logo(){
+  height: 100%;
+}
+
+@mixin Header__Name(){
+  font-weight: bold;
+  font-variant: small-caps;
+  text-decoration: underline;
+  font-size: 2rem;
+  color: white;
+}
+
+
+.header { @include Header();
+  &__side-nav-button { @include Header__SideNavButton(); }
+  &__logo { @include Header__Logo(); }
+  &__name { @include Header__Name(); }
+}

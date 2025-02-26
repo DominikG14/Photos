@@ -12,7 +12,7 @@ $icon-width: 2rem;
 
 
 @mixin SideNav__Options(){
-  background: base.$main-clr-dark;
+  background: base.$main-clr;
   @include ColumnLayout();
 }
 
@@ -93,9 +93,4 @@ $icon-width: 2rem;
       }
     }
   }
-}
-
-
-.header {
-  background: base.$main-clr-dark;
 }

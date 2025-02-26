@@ -4,13 +4,7 @@
 
 
 @mixin Photos(){
-  background: {
-    color: white;
-    image: url(../images/waves-top.svg);
-    repeat: no-repeat;
-    position: top;
-    size: cover;
-  }
+  background: white;
   height: calc(100% - stats.$stats-height);
 
   @include RowLayout(.5rem);

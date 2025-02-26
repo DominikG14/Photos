@@ -5,16 +5,14 @@
 {% block base_static %}
 <link rel="stylesheet" href="{% static 'photos/styles/base.css' %}">
 <link rel="stylesheet" href="{% static 'photos/styles/side-nav.css' %}">
+<link rel="stylesheet" href="{% static 'photos/styles/header.css' %}">
   {% block static %}
   {% endblock static %}
 {% endblock base_static %}
 
 
 {% block base_content %}
-<header class="header">
-
-</header>
-
+{% include 'photos/components/header.html' %}
 {% include 'photos/components/side-nav.html' %}
 
 <div class="content">

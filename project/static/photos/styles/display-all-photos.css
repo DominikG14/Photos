@@ -1,8 +1,8 @@
 :root {
-  --main-clr: #4909c2;
-  --main-clr-dark: #330688;
+  --main-clr-dark: hsl(353, 59%, 40%);
+  --main-clr: hsl(353, 59%, 60%);
   --bg-clr: white;
-  --font-clr: white;
+  --font-clr: black;
 }
 
 body {
@@ -12,7 +12,7 @@ body {
   gap: 0;
   grid-template-areas: "header header" "side-nav content";
   grid-template-columns: 15rem calc(100% - 15rem);
-  grid-template-rows: 3rem calc(100% - 3rem);
+  grid-template-rows: 3.5rem calc(100% - 3.5rem);
 }
 body > .header {
   grid-area: header;
@@ -30,7 +30,7 @@ body > content {
 }
 
 .stats {
-  background: var(--main-clr-dark);
+  background: var(--main-clr);
   height: 15rem;
   padding: 1.5rem;
   display: flex;
@@ -115,11 +115,7 @@ body > content {
 }
 
 .photos {
-  background-color: white;
-  background-image: url(../images/waves-top.svg);
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
+  background: white;
   height: calc(100% - 15rem);
   display: flex;
   gap: 0.5rem;
