@@ -1,28 +1,27 @@
 @use "sass" as *;
 @use "../base";
-@use "stats";
 
 
 @mixin Photos(){
-  background: white;
-  height: calc(100% - stats.$stats-height);
-
-  @include RowLayout(.5rem);
+  padding: .2rem;
+  @include RowLayout(.4rem);
 }
 
 
 @mixin Photos__Photo(){
   @include Transition();
-  @include SquareShape(10rem);
+  @include SquareShape(15rem);
   box-sizing: border-box;
 
   &:hover {
-    @include Highlight_Box();
+    transform: scale(1.05);
   }
 }
 
 
 @mixin Photos__Photo__Image(){
+  border-radius: .25rem;
+  @include Highlight_Box($color: black);
   @include FillWholeSpace();
   @include CoverBackgroundImage();
   @include CenterBackgroundImage();

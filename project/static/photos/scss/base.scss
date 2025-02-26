@@ -4,6 +4,7 @@
 :root {
   --main-clr-dark: hsl(353, 59%, 40%);
   --main-clr: hsl(353, 59%, 60%);
+  --main-clr-light: hsl(353, 59%, 80%);
 
   --bg-clr: white;
   --font-clr: black;
@@ -11,6 +12,8 @@
 
 $main-clr-dark: var(--main-clr-dark);
 $main-clr: var(--main-clr);
+$main-clr-light: var(--main-clr-light);
+
 $bg-clr: var(--bg-clr);
 $font-clr : var(--font-clr);
 

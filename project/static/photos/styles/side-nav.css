@@ -1,6 +1,7 @@
 :root {
   --main-clr-dark: hsl(353, 59%, 40%);
   --main-clr: hsl(353, 59%, 60%);
+  --main-clr-light: hsl(353, 59%, 80%);
   --bg-clr: white;
   --font-clr: black;
 }
@@ -24,6 +25,10 @@ body > content {
   grid-area: content;
 }
 
+.side-nav {
+  background: var(--main-clr);
+  border-right: 0.2rem solid white;
+}
 .side-nav__bottom {
   width: 100%;
 }

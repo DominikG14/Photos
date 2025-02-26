@@ -1,27 +1,10 @@
 @use "sass" as *;
-@use "display-all-photos/stats";
 @use "display-all-photos/photos";
+@use "base";
 
 
 .main {
   @include FillWholeSpace();
-}
-
-
-// Stats structure
-.stats { @include stats.Stats();
-  &__photo-type { @include stats.Stats__PhotoType();
-    &__stat { @include stats.Stats__PhotoType__Stat();
-      &__main { @include stats.Stats__PhotoType__Stat__Main();
-        &__icon { @include stats.Stats__PhotoType__Stat__Main__Icon(); }
-        &__right-side { @include stats.Stats__PhotoType__Stat__Main__RightSide();
-          &__name { @include stats.Stats__PhotoType__Stat__Main__RightSide__Name()}
-          &__count { @include stats.Stats__PhotoType__Stat__Main__RightSide__Count()}
-        }
-      }
-      &__underline { @include stats.Stats__PhotoType__Stat__Underline(); }
-    }
-  }
 }
 
 
