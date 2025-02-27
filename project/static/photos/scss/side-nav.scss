@@ -8,7 +8,7 @@ $icon-width: 2rem;
 
 @mixin SideNav(){
   background: base.$main-clr;
-  border-right: .2rem solid white;
+  @include Highlight_Box($color: black, $y: .25rem);
 }
 
 
@@ -24,17 +24,14 @@ $icon-width: 2rem;
   @include ColumnLayout();
   justify-content: space-between;
 
+  @include Transition($time: 500ms);
+
+  &:hover {
+    background: base.$main-clr-light; 
+  }
 
   &:hover &__underline {
     width: 100%;
-  }
-
-  &:hover &__main__icon {
-    @include Highlight();
-  }
-
-  &:hover &__main__name {
-    @include Highlight_Text();
   }
 }
 
@@ -44,7 +41,7 @@ $icon-width: 2rem;
   background: white;
   height: $underline-height;
 
-  @include Transition();
+  @include Transition($time: 500ms);
 }
 
 

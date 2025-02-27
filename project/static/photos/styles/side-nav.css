@@ -1,7 +1,7 @@
 :root {
   --main-clr-dark: hsl(353, 59%, 40%);
   --main-clr: hsl(353, 59%, 60%);
-  --main-clr-light: hsl(353, 59%, 80%);
+  --main-clr-light: hsl(353, 59%, 70%);
   --bg-clr: white;
   --font-clr: black;
 }
@@ -27,7 +27,7 @@ body > content {
 
 .side-nav {
   background: var(--main-clr);
-  border-right: 0.2rem solid white;
+  box-shadow: 1px 0.25rem 0.5rem black;
 }
 .side-nav__bottom {
   width: 100%;
@@ -44,21 +44,19 @@ body > content {
   gap: 0;
   flex-direction: column;
   justify-content: space-between;
+  transition: 500ms ease-in-out;
+}
+.side-nav__options__option:hover {
+  background: var(--main-clr-light);
 }
 .side-nav__options__option:hover .side-nav__options__option__underline {
   width: 100%;
-}
-.side-nav__options__option:hover .side-nav__options__option__main__icon {
-  filter: drop-shadow(1px 1px 0.5rem white);
-}
-.side-nav__options__option:hover .side-nav__options__option__main__name {
-  text-shadow: 1px 1px 0.5rem white;
 }
 .side-nav__options__option__underline {
   width: 0;
   background: white;
   height: 0.2rem;
-  transition: 300ms ease-in-out;
+  transition: 500ms ease-in-out;
 }
 .side-nav__options__option__main {
   height: calc(100% - 0.2rem);

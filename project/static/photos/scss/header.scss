@@ -2,10 +2,14 @@
 @use "base";
 
 
+$underline-height: .2rem;
+$options-spacing: 1rem;
+
+
 @mixin Header(){
   background: base.$main-clr-dark;
-  border-bottom: .2rem solid white;
   
+  @include Highlight_Box($color: black);
   @include X_Padding(1rem);
   @include RowLayout();
   gap: 1rem;
@@ -28,9 +32,53 @@
   color: white;
 }
 
+@mixin Header__TopNav(){
+  height: 100%;
+  @include RowLayout();
+}
+
+@mixin Header__TopNav__Option(){
+  height: 100%;
+
+  @include X_Padding($options-spacing);
+  @include Transition($time: 500ms);
+  @include ColumnLayout();
+  justify-content: space-between;
+
+  &:hover {
+    background: base.$main-clr; 
+  }
+
+  &:hover &__underline {
+    width: calc(100% + 2*$options-spacing);
+  }
+}
+
+@mixin Header__TopNav__Option__Name(){
+  color: white;
+  flex: 1;
+
+  @include CenterText();
+}
+
+@mixin Header__TopNav__Option__Underline(){
+  width: 0;
+  background: white;
+  height: $underline-height;
+
+  @include Move($x: -$options-spacing);
+  @include Transition($time: 500ms);
+}
 
 .header { @include Header();
   &__side-nav-button { @include Header__SideNavButton(); }
   &__logo { @include Header__Logo(); }
   &__name { @include Header__Name(); }
+
+  &__top-nav { @include Header__TopNav();
+    &__option { @include Header__TopNav__Option();
+      &__name { @include Header__TopNav__Option__Name(); }
+      &__underline { @include Header__TopNav__Option__Underline(); }
+    }
+  }
 }

@@ -1,7 +1,7 @@
 :root {
   --main-clr-dark: hsl(353, 59%, 40%);
   --main-clr: hsl(353, 59%, 60%);
-  --main-clr-light: hsl(353, 59%, 80%);
+  --main-clr-light: hsl(353, 59%, 70%);
   --bg-clr: white;
   --font-clr: black;
 }
@@ -31,9 +31,9 @@ body > content {
 }
 
 .photos {
-  padding: 0.2rem;
+  padding: 0.5rem;
   display: flex;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 .photos__photo {
   transition: 300ms ease-in-out;
@@ -44,6 +44,9 @@ body > content {
 .photos__photo:hover {
   transform: scale(1.05);
 }
+.photos__photo--upload-photos {
+  background: gray;
+}
 .photos__photo__image {
   border-radius: 0.25rem;
   box-shadow: 1px 1px 0.5rem black;
@@ -53,4 +56,8 @@ body > content {
   background-size: cover;
   object-position: center;
   background-position: center;
+}
+.photos__photo__image--upload-photos {
+  object-position: none;
+  object-fit: none;
 }

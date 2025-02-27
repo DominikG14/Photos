@@ -15,6 +15,11 @@
     <img class="photos__photo__image" src="{{ photo.image.url }}" alt="{{ photo.title }}">
   </a>
   {% endfor %}
+
+  <a class="photos__photo photos__photo--upload-photos" href="{% url 'photos:import_single_photo' %}">
+    <img class="photos__photo__image photos__photo__image--upload-photos" src="{% static 'photos/images/upload-icon.svg' %}" alt="">
+  </a>
+
 </section>
 </main>
 

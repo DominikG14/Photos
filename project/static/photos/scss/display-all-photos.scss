@@ -1,5 +1,4 @@
 @use "sass" as *;
-@use "display-all-photos/photos";
 @use "base";
 
 
@@ -8,9 +7,46 @@
 }
 
 
+@mixin Photos(){
+  $gap-between-photos: .5rem;
+
+  padding: $gap-between-photos;
+  @include RowLayout($gap-between-photos);
+}
+
+
+@mixin Photos__Photo(){
+  @include Transition();
+  @include SquareShape(15rem);
+  box-sizing: border-box;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &--upload-photos {
+    background: gray;
+  }
+}
+
+
+@mixin Photos__Photo__Image(){
+  border-radius: .25rem;
+  @include Highlight_Box($color: black);
+  @include FillWholeSpace();
+  @include CoverBackgroundImage();
+  @include CenterBackgroundImage();
+
+  &--upload-photos {
+    object-position: none;
+    object-fit: none;
+  }
+}
+
+
 // Photos structure
-.photos { @include photos.Photos();
-  &__photo { @include photos.Photos__Photo(); 
-    &__image { @include photos.Photos__Photo__Image(); }
+.photos { @include Photos();
+  &__photo { @include Photos__Photo(); 
+    &__image { @include Photos__Photo__Image(); }
   }
 }
