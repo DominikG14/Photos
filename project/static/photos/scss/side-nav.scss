@@ -2,18 +2,18 @@
 @use "base";
 
 
-$underline-height: .2rem;
-$icon-width: 2rem;
+$UNDERLINE-HEIGHT: .2rem;
+$ICON-WIDTH: 2rem;
 
 
 @mixin SideNav(){
-  background: base.$main-clr;
-  @include Highlight_Box($color: black, $y: .25rem);
+  background: base.$bg-00;
+  @include Highlight_Box($color: black, $y: base.$margin-xxs);
 }
 
 
 @mixin SideNav__Options(){
-  background: base.$main-clr;
+  background: base.$bg-00;
   @include ColumnLayout();
 }
 
@@ -27,7 +27,7 @@ $icon-width: 2rem;
   @include Transition($time: 500ms);
 
   &:hover {
-    background: base.$main-clr-light; 
+    background: base.$bg-00; 
   }
 
   &:hover &__underline {
@@ -39,20 +39,20 @@ $icon-width: 2rem;
 @mixin SideNav__Options__Option__Underline(){
   width: 0;
   background: white;
-  height: $underline-height;
+  height: $UNDERLINE-HEIGHT;
 
   @include Transition($time: 500ms);
 }
 
 
 @mixin SideNav__Options__Option__Main(){
-  height: calc(100% - $underline-height);
+  height: calc(100% - $UNDERLINE-HEIGHT);
   align-items: center;
 
   @include X_Padding(.5rem);
   @include GridLayout(1rem);
   grid-template-areas: "icon name";
-  grid-template-columns: $icon-width calc(100% - $icon-width);
+  grid-template-columns: $ICON-WIDTH calc(100% - $ICON-WIDTH);
 }
 
 
@@ -69,7 +69,7 @@ $icon-width: 2rem;
   font-weight: bold;
   color: white;
 
-  @include Move($y: $underline-height / 2);
+  @include Move($y: $UNDERLINE-HEIGHT / 2);
   @include Transition();
 }
 

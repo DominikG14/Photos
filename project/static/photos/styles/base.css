@@ -1,18 +1,45 @@
 :root {
-  --main-clr-dark: hsl(353, 59%, 40%);
-  --main-clr: hsl(353, 59%, 60%);
-  --main-clr-light: hsl(353, 59%, 70%);
-  --bg-clr: white;
-  --font-clr: black;
+  --black-00: hsl(0, 0%, 0%);
+  --black-10: hsl(0, 0%, 10%);
+  --black-20: hsl(0, 0%, 20%);
+  --black-30: hsl(0, 0%, 30%);
+  --black-40: hsl(0, 0%, 40%);
+  --black-50: hsl(0, 0%, 50%);
+  --black-60: hsl(0, 0%, 60%);
+  --black-70: hsl(0, 0%, 70%);
+  --black-80: hsl(0, 0%, 80%);
+  --black-90: hsl(0, 0%, 90%);
+  --white: hsl(0, 0%, 100%);
+  --bg-00: var(--black-00);
+  --bg-10: var(--black-10);
+  --bg-20: var(--black-20);
+  --bg-30: var(--black-30);
+  --bg-40: var(--black-40);
+  --bg-50: var(--black-50);
+  --bg-60: var(--black-60);
+  --bg-70: var(--black-70);
+  --bg-80: var(--black-80);
+  --bg-90: var(--black-90);
+  --font: var(--white);
+}
+
+:root {
+  --margin-xxs: 0.25rem;
+  --margin-xs: 0.5rem;
+  --margin-s: 0.75rem;
+  --margin-m: 1rem;
+  --margin-l: 1.25rem;
+  --margin-xl: 1.5rem;
+  --margin-xxl: 1.75rem;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  color: var(--font-clr);
+  color: var(--font);
   display: grid;
   gap: 0;
-  grid-template-areas: "header header" "side-nav content";
-  grid-template-columns: 15rem calc(100% - 15rem);
+  grid-template-areas: "side-nav header" "side-nav content";
+  grid-template-columns: 25rem calc(100% - 25rem);
   grid-template-rows: 3.5rem calc(100% - 3.5rem);
 }
 body > .header {

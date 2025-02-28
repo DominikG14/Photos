@@ -2,37 +2,80 @@
 
 
 :root {
-  --main-clr-dark: hsl(353, 59%, 40%);
-  --main-clr: hsl(353, 59%, 60%);
-  --main-clr-light: hsl(353, 59%, 70%);
+  --black-00: hsl(0, 0%, 0%);
+  --black-10: hsl(0, 0%, 10%);
+  --black-20: hsl(0, 0%, 20%);
+  --black-30: hsl(0, 0%, 30%);
+  --black-40: hsl(0, 0%, 40%);
+  --black-50: hsl(0, 0%, 50%);
+  --black-60: hsl(0, 0%, 60%);
+  --black-70: hsl(0, 0%, 70%);
+  --black-80: hsl(0, 0%, 80%);
+  --black-90: hsl(0, 0%, 90%);
+  --white: hsl(0, 0%, 100%);
 
-  --bg-clr: white;
-  --font-clr: black;
+  // Main colors
+  --bg-00: var(--black-00);
+  --bg-10: var(--black-10);
+  --bg-20: var(--black-20);
+  --bg-30: var(--black-30);
+  --bg-40: var(--black-40);
+  --bg-50: var(--black-50);
+  --bg-60: var(--black-60);
+  --bg-70: var(--black-70);
+  --bg-80: var(--black-80);
+  --bg-90: var(--black-90);
+
+  --font: var(--white);
 }
 
-$main-clr-dark: var(--main-clr-dark);
-$main-clr: var(--main-clr);
-$main-clr-light: var(--main-clr-light);
+$font: var(--font);
+$bg-00: var(--black-00);
+$bg-10: var(--black-10);
+$bg-20: var(--black-20);
+$bg-30: var(--black-30);
+$bg-40: var(--black-40);
+$bg-50: var(--black-50);
+$bg-60: var(--black-60);
+$bg-70: var(--black-70);
+$bg-80: var(--black-80);
+$bg-90: var(--black-90);
 
-$bg-clr: var(--bg-clr);
-$font-clr : var(--font-clr);
+
+$MARGIN-BASIC: 1rem;
+:root {
+  --margin-xxs: #{0.25 * $MARGIN-BASIC};
+  --margin-xs:  #{0.5 * $MARGIN-BASIC};
+  --margin-s:   #{0.75 * $MARGIN-BASIC};
+  --margin-m:   #{$MARGIN-BASIC};
+  --margin-l:   #{1.25 * $MARGIN-BASIC};
+  --margin-xl:  #{1.5 * $MARGIN-BASIC};
+  --margin-xxl: #{1.75 * $MARGIN-BASIC};
+}
+$margin-xxs: var(--margin-xxs);
+$margin-xs:  var(--margin-xs);
+$margin-s:   var(--margin-s);
+$margin-m:   var(--margin-m);
+$margin-l:   var(--margin-l);
+$margin-xl:  var(--margin-xl);
+$margin-xxl: var(--margin-xxl);
 
 
-$top-nav-height: 3.5rem;
-$side-nav-width: 15rem;
 
+$TOP-NAV-HEIGHT: 3.5rem;
+$SIDE-NAV-WIDTH: 25rem;
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  color: $font-clr ;
+  color: $font ;
 
   @include GridLayout();
 
   grid-template-areas:
-  "header header"
+  "side-nav header"
   "side-nav content";
-  grid-template-columns: $side-nav-width calc(100% - $side-nav-width);
-  grid-template-rows: $top-nav-height calc(100% - $top-nav-height);
+  grid-template-columns: $SIDE-NAV-WIDTH calc(100% - $SIDE-NAV-WIDTH);
+  grid-template-rows: $TOP-NAV-HEIGHT calc(100% - $TOP-NAV-HEIGHT);
 
   & > .header {
     grid-area: header;

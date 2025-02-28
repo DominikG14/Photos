@@ -5,23 +5,20 @@
   <img class="header__side-nav-button__icon" src="{% static 'photos/images/menu-icon.svg' %}" alt="">
 </button>
 
-<img class="header__logo" src="{% static 'photos/images/app-icon.png' %}" alt="">
-<h1 class="header__name" >GalleryX</h1>
-
 <nav class="header__top-nav">
   {% block top_nav %}
     <a class="header__top-nav__option" href="">
-      <div class="header__top-nav__option__name">Wszystkie Zdjęcia</div>
+      <div class="header__top-nav__option__name">Galeria Zdjęć</div>
       <div class="header__top-nav__option__underline"></div>
     </a>
 
     <a class="header__top-nav__option" href="">
-      <div class="header__top-nav__option__name">Bez Kategorii</div>
+      <div class="header__top-nav__option__name">Albumy</div>
       <div class="header__top-nav__option__underline"></div>
     </a>
 
     <a class="header__top-nav__option" href="">
-      <div class="header__top-nav__option__name">Duplikaty</div>
+      <div class="header__top-nav__option__name">Dodaj Zdjęcia</div>
       <div class="header__top-nav__option__underline"></div>
     </a>
   {% endblock top_nav %}

@@ -12,6 +12,7 @@
 
   padding: $gap-between-photos;
   @include RowLayout($gap-between-photos);
+  flex-wrap: wrap
 }
 
 
