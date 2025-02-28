@@ -36,6 +36,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: var(--font);
+  background: var(--black-00);
   display: grid;
   gap: 0;
   grid-template-areas: "side-nav header" "side-nav content";
@@ -52,15 +53,10 @@ body > content {
   grid-area: content;
 }
 
-.side-nav {
-  background: var(--black-00);
-  box-shadow: 1px var(--margin-xxs) 0.5rem black;
-}
 .side-nav__bottom {
   width: 100%;
 }
 .side-nav__options {
-  background: var(--black-00);
   display: flex;
   gap: 0;
   flex-direction: column;
@@ -74,7 +70,7 @@ body > content {
   transition: 500ms ease-in-out;
 }
 .side-nav__options__option:hover {
-  background: var(--black-00);
+  background: var(--black-10);
 }
 .side-nav__options__option:hover .side-nav__options__option__underline {
   width: 100%;

@@ -29,6 +29,7 @@
   --font: var(--white);
 }
 
+$white: var(--white);
 $font: var(--font);
 $bg-00: var(--black-00);
 $bg-10: var(--black-10);
@@ -67,7 +68,8 @@ $SIDE-NAV-WIDTH: 25rem;
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  color: $font ;
+  color: $font;
+  background: $bg-00;
 
   @include GridLayout();
 

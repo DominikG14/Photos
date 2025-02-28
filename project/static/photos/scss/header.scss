@@ -2,57 +2,63 @@
 @use "base";
 
 
-$underline-height: .2rem;
-$options-spacing: 1rem;
+$UNDERLINE-HEIGHT: .2rem;
+$OPTIONS-SPACING: 1rem;
 
 
 @mixin Header(){
   background: base.$bg-00;
   
   @include Highlight_Box($color: black);
-  @include X_Padding(1rem);
+  @include X_Padding(base.$margin-m);
   @include RowLayout();
   gap: 1rem;
   align-items: center;
 }
 
+
 @mixin Header__SideNavButton(){
   @include SquareShape(1.5rem);
 }
 
+
 @mixin Header__Logo(){
   height: 100%;
 }
+
 
 @mixin Header__Name(){
   font-weight: bold;
   font-variant: small-caps;
   text-decoration: underline;
   font-size: 2rem;
-  color: white;
+  color: base.$font;
 }
+
 
 @mixin Header__TopNav(){
   height: 100%;
   @include RowLayout();
 }
 
+
 @mixin Header__TopNav__Option(){
   height: 100%;
 
-  @include X_Padding($options-spacing);
+  @include X_Padding($OPTIONS-SPACING);
   @include Transition($time: 500ms);
   @include ColumnLayout();
   justify-content: space-between;
 
   &:hover {
-    background: base.$bg-00; 
+    background: base.$bg-10; 
   }
 
   &:hover &__underline {
-    width: calc(100% + 2*$options-spacing);
+    width: calc(100% + 2*$OPTIONS-SPACING);
   }
 }
+
 
 @mixin Header__TopNav__Option__Name(){
   color: white;
@@ -61,14 +67,16 @@ $options-spacing: 1rem;
   @include CenterText();
 }
 
+
 @mixin Header__TopNav__Option__Underline(){
   width: 0;
   background: white;
-  height: $underline-height;
+  height: $UNDERLINE-HEIGHT;
 
-  @include Move($x: -$options-spacing);
+  @include Move($x: -$OPTIONS-SPACING);
   @include Transition($time: 500ms);
 }
+
 
 .header { @include Header();
   &__side-nav-button { @include Header__SideNavButton(); }

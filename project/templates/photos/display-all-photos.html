@@ -12,16 +12,27 @@
 <section class="photos">
   {% for photo in photos %}
   <a class="photos__photo" href="{% url 'photos:inspect_photo' photo.title %}">
-    <img class="photos__photo__image" src="{{ photo.image.url }}" alt="{{ photo.title }}">
+    <img class="photos__photo__image" src="{{ photo.image.url }}" alt="1">
   </a>
   {% endfor %}
 
   <a class="photos__photo photos__photo--upload-photos" href="{% url 'photos:import_single_photo' %}">
     <img class="photos__photo__image photos__photo__image--upload-photos" src="{% static 'photos/images/upload-icon.svg' %}" alt="">
   </a>
-
 </section>
 </main>
 
+<section class="photo-display">
+  <div class="photo-display__center">
+    <button class="photo-display__center__left-arrow">
+      <img class="photo-display__center__left-arrow__icon" src="{% static 'photos/images/arrow-left-icon.svg' %}" alt="Left Arrow">
+    </button>
 
+    <img class="photo-display__center__photo" src="{% static 'photos/images/waves-side-nav.svg' %}" alt="1">
+
+    <button class="photo-display__center__right-arrow">
+      <img class="photo-display__center__right-arrow__icon" src="{% static 'photos/images/arrow-right-icon.svg' %}" alt="Right Arrow">
+    </button>
+  </div>
+</section>
 {% endblock content %}

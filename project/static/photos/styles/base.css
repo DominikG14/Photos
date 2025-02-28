@@ -36,6 +36,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: var(--font);
+  background: var(--black-00);
   display: grid;
   gap: 0;
   grid-template-areas: "side-nav header" "side-nav content";

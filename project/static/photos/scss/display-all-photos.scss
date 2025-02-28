@@ -8,31 +8,32 @@
 
 
 @mixin Photos(){
-  $gap-between-photos: .5rem;
+  $gap-between-photos: base.$margin-xs;
 
   padding: $gap-between-photos;
   @include RowLayout($gap-between-photos);
-  flex-wrap: wrap
+  flex-wrap: wrap;
 }
 
 
 @mixin Photos__Photo(){
   @include Transition();
-  @include SquareShape(15rem);
   box-sizing: border-box;
+  flex: 1 1 calc(100% / 3 - 10px);
+  max-width: calc(100% / 3 - 10px);
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
   }
 
   &--upload-photos {
-    background: gray;
+    background: base.$bg-10;
   }
 }
 
 
 @mixin Photos__Photo__Image(){
-  border-radius: .25rem;
+  aspect-ratio: 1 / 1;
   @include Highlight_Box($color: black);
   @include FillWholeSpace();
   @include CoverBackgroundImage();
@@ -50,4 +51,62 @@
   &__photo { @include Photos__Photo(); 
     &__image { @include Photos__Photo__Image(); }
   }
+}
+
+
+// Photos-display structure
+@mixin PhotoDisplay(){
+  @include FillWholeSpace();
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+
+@mixin PhotoDisplay__Center(){
+  @include RowLayout();
+  justify-content: space-between
+}
+
+
+@mixin PhotoDisplay__Center__LeftArrow(){
+
+}
+
+
+@mixin PhotoDisplay__Center__LeftArrow__Icon(){
+
+}
+
+
+@mixin PhotoDisplay__Center__RightArrow(){
+
+}
+
+
+@mixin PhotoDisplay__Center__RightArrow__Icon(){
+
+}
+
+
+@mixin PhotoDisplay__Center__Photo(){
+
+}
+
+
+.photo-display { @include PhotoDisplay();
+  &__center { @include PhotoDisplay__Center();
+    &__left-arrow { @include PhotoDisplay__Center__LeftArrow();
+      &__icon { @include PhotoDisplay__Center__LeftArrow__Icon(); }
+    }
+
+    &__photo { @include PhotoDisplay__Center__Photo(); }
+
+    &__right-arrow { @include PhotoDisplay__Center__RightArrow();
+      &__icon { @include PhotoDisplay__Center__RightArrow__Icon(); }
+    }
+  }
+
 }

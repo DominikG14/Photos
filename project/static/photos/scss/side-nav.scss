@@ -7,13 +7,10 @@ $ICON-WIDTH: 2rem;
 
 
 @mixin SideNav(){
-  background: base.$bg-00;
-  @include Highlight_Box($color: black, $y: base.$margin-xxs);
 }
 
 
 @mixin SideNav__Options(){
-  background: base.$bg-00;
   @include ColumnLayout();
 }
 
@@ -27,7 +24,7 @@ $ICON-WIDTH: 2rem;
   @include Transition($time: 500ms);
 
   &:hover {
-    background: base.$bg-00; 
+    background: base.$bg-10; 
   }
 
   &:hover &__underline {
