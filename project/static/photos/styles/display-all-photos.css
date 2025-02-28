@@ -60,15 +60,14 @@ body > content {
 
 .photos {
   padding: var(--margin-xs);
-  display: flex;
+  display: grid;
   gap: var(--margin-xs);
-  flex-wrap: wrap;
+  grid-template-columns: repeat(2, 1fr);
 }
 .photos__photo {
   transition: 300ms ease-in-out;
   box-sizing: border-box;
-  flex: 1 1 calc(33.3333333333% - 10px);
-  max-width: calc(33.3333333333% - 10px);
+  width: 100%;
 }
 .photos__photo:hover {
   transform: scale(1.01);

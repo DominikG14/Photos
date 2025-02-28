@@ -11,16 +11,15 @@
   $gap-between-photos: base.$margin-xs;
 
   padding: $gap-between-photos;
-  @include RowLayout($gap-between-photos);
-  flex-wrap: wrap;
+  @include GridLayout($gap-between-photos);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 
 @mixin Photos__Photo(){
   @include Transition();
   box-sizing: border-box;
-  flex: 1 1 calc(100% / 3 - 10px);
-  max-width: calc(100% / 3 - 10px);
+  width: 100%;
 
   &:hover {
     transform: scale(1.01);
