@@ -9,59 +9,17 @@
 
 {% block content %}
 <main class="main">
-<section class="stats">
-  <div class="stats__photo-type">
-    <a href="" class="stats__photo-type__stat stats__photo-type__stat--all stats__photo-type__stat--current">
-      <div class="stats__photo-type__stat__main">
-        <img class="stats__photo-type__stat__main__icon" src="{% static 'photos/images/all-photos-icon.svg' %}" alt="">
-      
-        <div class="stats__photo-type__stat__main__right-side">
-          <div class="stats__photo-type__stat__main__right-side__name">Wszystkich Zdjęć</div>
-          <div class="stats__photo-type__stat__main__right-side__count">{{ photos_all }}</div>
-        </div>
-      </div>
-
-      <div class="stats__photo-type__stat__underline"></div>
-    </a>
-
-    <a href="" class="stats__photo-type__stat stats__photo-type__stat--no-category">
-      <div class="stats__photo-type__stat__main">
-        <img class="stats__photo-type__stat__main__icon" src="{% static 'photos/images/no-category-photos-icon.svg' %}" alt="">
-      
-        <div class="stats__photo-type__stat__main__right-side">
-          <div class="stats__photo-type__stat__main__right-side__name">Bez Kategorii</div>
-          <div class="stats__photo-type__stat__main__right-side__count">{{ photos_no_category }}</div>
-        </div>
-      </div>
-
-      <div class="stats__photo-type__stat__underline"></div>
-    </a>
-
-    <a href="" class="stats__photo-type__stat stats__photo-type__stat--duplicates">
-      <div class="stats__photo-type__stat__main">
-        <img class="stats__photo-type__stat__main__icon" src="{% static 'photos/images/duplicates-photos-icon.svg' %}" alt="">
-      
-        <div class="stats__photo-type__stat__main__right-side">
-          <div class="stats__photo-type__stat__main__right-side__name">Duplikaty</div>
-          <div class="stats__photo-type__stat__main__right-side__count">{{ photos_duplicates }}</div>
-        </div>
-      </div>
-
-      <div class="stats__photo-type__stat__underline"></div>
-    </a>
-  </div>
-
-  <div class="stats__photo-size">
-
-  </div>
-</section>
-
 <section class="photos">
   {% for photo in photos %}
   <a class="photos__photo" href="{% url 'photos:inspect_photo' photo.title %}">
     <img class="photos__photo__image" src="{{ photo.image.url }}" alt="{{ photo.title }}">
   </a>
   {% endfor %}
+
+  <a class="photos__photo photos__photo--upload-photos" href="{% url 'photos:import_single_photo' %}">
+    <img class="photos__photo__image photos__photo__image--upload-photos" src="{% static 'photos/images/upload-icon.svg' %}" alt="">
+  </a>
+
 </section>
 </main>
 

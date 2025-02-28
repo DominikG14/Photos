@@ -1,8 +1,9 @@
 :root {
-  --main-clr: #4909c2;
-  --main-clr-dark: #330688;
+  --main-clr-dark: hsl(353, 59%, 40%);
+  --main-clr: hsl(353, 59%, 60%);
+  --main-clr-light: hsl(353, 59%, 70%);
   --bg-clr: white;
-  --font-clr: white;
+  --font-clr: black;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
   gap: 0;
   grid-template-areas: "header header" "side-nav content";
   grid-template-columns: 15rem calc(100% - 15rem);
-  grid-template-rows: 3rem calc(100% - 3rem);
+  grid-template-rows: 3.5rem calc(100% - 3.5rem);
 }
 body > .header {
   grid-area: header;

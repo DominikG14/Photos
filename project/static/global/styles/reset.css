@@ -51,10 +51,10 @@ table {
   border-spacing: 0;
 }
 
-a {
+a, button {
   all: unset;
 }
-a:hover {
+a:hover, button:hover {
   cursor: pointer;
 }
 
